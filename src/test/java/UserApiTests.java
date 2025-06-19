@@ -3,9 +3,9 @@ import config.ApiConfig;
 import models.ApiResponse;
 import models.User;
 import io.restassured.module.jsv.JsonSchemaValidator;
-import io.restassured.response.Response;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.*;
@@ -14,7 +14,10 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserApiTests {
 
     private static final String USERNAME = "ann_brez";
+    private static final String PASSWORD = "123";
     private User testUser;
+
+
 
     @BeforeEach
     public void setup() {
@@ -26,7 +29,7 @@ public class UserApiTests {
                 .firstName("ann")
                 .lastName("brez")
                 .email("test@mail.ru")
-                .password("123")
+                .password("PASSWORD")
                 .phone("66667888")
                 .userStatus(1)
                 .build();
@@ -146,5 +149,6 @@ public class UserApiTests {
                 .when()
                 .post(ApiConfig.USER_PATH);
     }
+
 }
 
